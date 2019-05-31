@@ -5,15 +5,11 @@ Deployment to DoC Cloud
 
 Login to cloudstack with the doc domain
 Create a new instance with the following details:
-* Template: Ubuntu v14.04 30Gb (Non CSG)
-* Compute offering	CPU: 2 cores 2GHz & RAM: 2Gb
-* OS Type:	Ubuntu 14.04 (64-bit)
-
-##### Note: RAM size can vary
-
-After the instance has been created correctly, note the hostname
-It will be in a format like cloud-vm-XX-YY.doc.ic.ac.uk
-Where XX and YY are the penultimate and ultimate bytes of the IP address.
+* Select a zone: doc-46
+* Select ISO or template: Template
+* Template: Ubuntu Ubuntu v16.04.3 (Non CSG - 2017/11/02)
+* Compute offering	CPU: CPU: 2 cores 2GHz & RAM: 2Gb
+* Disk: Local Storage: 20Gb
 
 ## VM Setup
 
@@ -23,11 +19,16 @@ Where XX and YY are the penultimate and ultimate bytes of the IP address.
 adduser --ingroup sudo ubuntu
 ```
 * Login ubuntu and add your SSH key to ease the login process for ansible
-* Run `sudo visudo` and replace
-```%sudo ALL=NOPASSWD: ALL```
-with
-```%sudo ALL=(ALL) NOPASSWD: ALL```
-##### Note: This step is done to allow sudoers to become other users without asking for password
+```bash
+mkdir ~/.ssh
+chmod 700 ~/.ssh
+touch ~/.ssh/authorized_keys
+chmod 600 ~/.ssh/authorized_keys
+vim ~/.ssh/authorized_keys
+```
+* Run `sudo visudo` and at the end of the file add:
+```ubuntu ALL=(ALL) NOPASSWD: ALL```
+##### Note: This step is dangerous we should eventually update the process
 
 ## Deployment
 * Open the file provisioning/hosts

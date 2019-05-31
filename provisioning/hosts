@@ -1,11 +1,11 @@
 [dbservers]
-klee.doc.ic.ac.uk
+146.169.44.136:22 ansible_ssh_user=ubuntu
 
 [redisservers]
-klee.doc.ic.ac.uk
+146.169.44.136:22 ansible_ssh_user=ubuntu
 
 [webservers]
-klee.doc.ic.ac.uk
+146.169.44.136:22 ansible_ssh_user=ubuntu
 
 [workers]
-klee.doc.ic.ac.uk
+146.169.44.136:22 ansible_ssh_user=ubuntu

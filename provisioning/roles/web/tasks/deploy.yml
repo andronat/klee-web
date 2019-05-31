@@ -18,6 +18,13 @@
     executable: /bin/bash
   when: not ci
 
+# npm install
+# - name: "Install node dependencies"
+#   npm: path={{ src_dir }}
+#   become: yes
+#   become_user: klide
+#   when: not ci
+
 - name: Run grunt
   shell: grunt
   become: yes
